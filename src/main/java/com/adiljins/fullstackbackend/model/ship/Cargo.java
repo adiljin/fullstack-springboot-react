@@ -1,13 +1,13 @@
 package com.adiljins.fullstackbackend.model.ship;
-
+import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Cruise extends Ship{
+public class Cargo extends Ship{
 
-    private final int weightMin = 50;
-    private final int weightMax = 1000;
-    private final int pricePerYear = 1000;
+    private final int weightMin = 2000;
+    private final int weightMax = 5000;
+    private final int pricePerYear = 2000;
 
     public int getWeightMin() {
         return weightMin;

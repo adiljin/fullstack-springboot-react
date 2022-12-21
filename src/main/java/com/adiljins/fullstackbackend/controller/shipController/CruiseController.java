@@ -2,12 +2,13 @@ package com.adiljins.fullstackbackend.controller.shipController;
 
 import com.adiljins.fullstackbackend.exception.NotFoundException;
 import com.adiljins.fullstackbackend.model.ship.Cruise;
-import com.adiljins.fullstackbackend.model.ship.Ship;
 import com.adiljins.fullstackbackend.repository.CruiseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
 
 @RestController
 @CrossOrigin("http://localhost:3000/")
@@ -18,9 +19,7 @@ public class CruiseController {
 
     @PostMapping(path = "/cruise")
     Cruise newCruise(@RequestBody Cruise newCruise){
-        int weightMin = newCruise.getWeightMin();
-        int weightMax = newCruise.getWeightMax();
-        int pricePerYear = newCruise.getPricePerYear();
+        newCruise.setPrice(getLeasing(newCruise.getTypeLease(),newCruise.getYears(),newCruise.getPricePerYear()));
         return cruiseRepository.save(newCruise);
     }
 
@@ -37,9 +36,6 @@ public class CruiseController {
         return cruiseRepository.findById(id).map(cruise -> {
             cruise.setName(newCruise.getName());
             cruise.setAddress(newCruise.getAddress());
-            cruise.setWeightMin(newCruise.getWeightMin());
-            cruise.setWeightMax(newCruise.getWeightMax());
-            cruise.setPricePerYear(newCruise.getPricePerYear());
             cruise.setPrice(newCruise.getPrice());
             cruise.setYears(newCruise.getYears());
             cruise.setTypeLease(newCruise.getTypeLease());
@@ -55,6 +51,5 @@ public class CruiseController {
         cruiseRepository.deleteById(id);
         return "Cruise with id " + id + " has been deleted";
     }
-
 }
 

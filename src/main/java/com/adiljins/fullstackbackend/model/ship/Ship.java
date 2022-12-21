@@ -1,7 +1,7 @@
 package com.adiljins.fullstackbackend.model.ship;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Service;
+import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
 
 @MappedSuperclass
 public class Ship {
@@ -11,14 +11,9 @@ public class Ship {
     private Long id;
     private String name;
     private String address;
-
-    private int weightMin;
-    private int weightMax;
-    private int pricePerYear;
-    private int price;
     private int years;
     private String typeLease;
-
+    private int price;
 
     public Long getId() {
         return id;
@@ -34,24 +29,6 @@ public class Ship {
     }
     public void setAddress(String address) {
         this.address = address;
-    }
-    public int getWeightMin() {
-        return weightMin;
-    }
-    public void setWeightMin(int weightMin) {
-        this.weightMin = weightMin;
-    }
-    public int getWeightMax() {
-        return weightMax;
-    }
-    public void setWeightMax(int weightMax) {
-        this.weightMax = weightMax;
-    }
-    public int getPricePerYear() {
-        return pricePerYear;
-    }
-    public void setPricePerYear(int pricePerYear) {
-        this.pricePerYear = pricePerYear;
     }
     public int getPrice() {
         return price;
