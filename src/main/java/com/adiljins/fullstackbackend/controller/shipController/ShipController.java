@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("http://localhost:3000/")
-public class shipController {
+public class ShipController {
 
     @Autowired
     private ShipRepository shipRepository;

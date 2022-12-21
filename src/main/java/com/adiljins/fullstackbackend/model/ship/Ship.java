@@ -1,10 +1,9 @@
 package com.adiljins.fullstackbackend.model.ship;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
 
-@Entity
+@MappedSuperclass
 public class Ship {
 
     @Id
@@ -19,6 +18,7 @@ public class Ship {
     private int price;
     private int years;
     private String typeLease;
+
 
     public Long getId() {
         return id;
