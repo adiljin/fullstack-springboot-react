@@ -2,8 +2,8 @@ package com.adiljins.fullstackbackend.controller.shipController;
 
 
 import com.adiljins.fullstackbackend.exception.NotFoundException;
-import com.adiljins.fullstackbackend.model.ship.Cargo;
-import com.adiljins.fullstackbackend.repository.CargoRepository;
+import com.adiljins.fullstackbackend.model.ship.ports_10.Cargo;
+import com.adiljins.fullstackbackend.repository.ship_repo.CargoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,12 +1,15 @@
 package com.adiljins.fullstackbackend.controller.shipController;
 
 import com.adiljins.fullstackbackend.exception.NotFoundException;
-import com.adiljins.fullstackbackend.model.ship.Cruise;
-import com.adiljins.fullstackbackend.repository.CruiseRepository;
+import com.adiljins.fullstackbackend.model.essential.Company;
+import com.adiljins.fullstackbackend.model.ship.ports_3.Cruise;
+import com.adiljins.fullstackbackend.repository.CompanyRepository;
+import com.adiljins.fullstackbackend.repository.ship_repo.CruiseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
 
