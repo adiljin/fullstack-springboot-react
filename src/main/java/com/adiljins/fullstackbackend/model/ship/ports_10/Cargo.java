@@ -1,8 +1,12 @@
 package com.adiljins.fullstackbackend.model.ship.ports_10;
 import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
 
+import com.adiljins.fullstackbackend.model.essential.Company;
 import com.adiljins.fullstackbackend.model.ship.Ship;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Cargo extends Ship {
@@ -20,4 +24,5 @@ public class Cargo extends Ship {
     public int getPricePerYear() {
         return pricePerYear;
     }
+
 }

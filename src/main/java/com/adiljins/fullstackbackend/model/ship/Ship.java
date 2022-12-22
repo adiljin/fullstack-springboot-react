@@ -4,6 +4,7 @@ import com.adiljins.fullstackbackend.exception.NotFoundException;
 import com.adiljins.fullstackbackend.model.essential.Company;
 import com.adiljins.fullstackbackend.repository.CompanyRepository;
 import com.adiljins.fullstackbackend.repository.ship_repo.CargoRepository;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
 
 //@MappedSuperclass
 @Entity
+@Table(name="SHIP_TBL")
 public class Ship {
 
     @Id
@@ -28,14 +30,16 @@ public class Ship {
     private String typeLease;
     private int price;
 
-    @ManyToMany
-    Set<Company> company;
-    public Set<Company> getCompany() {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    Company company;
+    public Company getCompany() {
         return company;
     }
-    public void setCompany(Set<Company> company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
+
 
     public Long getId() {
         return id;
