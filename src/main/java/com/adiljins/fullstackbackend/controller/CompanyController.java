@@ -76,9 +76,9 @@ public class CompanyController {
         List<Company> com =  companyRepository.findAll();
         for(Company x:com){
             for(Ship y:x.getShipsSet()){
+                y.setName(y.getClass().getSimpleName());
                 y.setPrice(getLeasing(y.getTypeLease(),y.getYears(),y.getPricePerYear()));
                 y.setPricePerYear(y.getPricePerYear());
-                companyRepository.save(x);
             }
             companyRepository.save(x);
         }
