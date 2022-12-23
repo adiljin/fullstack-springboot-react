@@ -19,7 +19,6 @@ public class Route {
     public Route(String portName, int portPrice) {
         this.portName = portName;
         this.portPrice = portPrice;
-
     }
 
     //
