@@ -3,15 +3,11 @@ package com.adiljins.fullstackbackend.controller;
 import com.adiljins.fullstackbackend.exception.NotFoundException;
 import com.adiljins.fullstackbackend.model.essential.Company;
 import com.adiljins.fullstackbackend.model.ship.Ship;
-import com.adiljins.fullstackbackend.model.ship.ports_10.Cargo;
 import com.adiljins.fullstackbackend.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
-
-import java.net.URI;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/company-ship")

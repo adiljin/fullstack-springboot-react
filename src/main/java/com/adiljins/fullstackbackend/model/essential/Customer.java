@@ -3,8 +3,10 @@ package com.adiljins.fullstackbackend.model.essential;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="CUST_TBL")
 public class Customer {
     @Id
     @GeneratedValue

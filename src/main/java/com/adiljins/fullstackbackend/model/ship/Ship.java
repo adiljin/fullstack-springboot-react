@@ -1,23 +1,10 @@
 package com.adiljins.fullstackbackend.model.ship;
 
-import com.adiljins.fullstackbackend.exception.NotFoundException;
 import com.adiljins.fullstackbackend.model.essential.Company;
-import com.adiljins.fullstackbackend.repository.CompanyRepository;
-import com.adiljins.fullstackbackend.repository.ship_repo.CargoRepository;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-import java.util.Set;
-
-import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
-
-//@MappedSuperclass
 @Entity
 @Table(name="SHIP_TBL")
 @Component
@@ -32,7 +19,6 @@ public class Ship {
     private String typeLease;
     private int price;
     private int pricePerYear;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
