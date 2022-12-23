@@ -1,5 +1,5 @@
 package com.adiljins.fullstackbackend.controller;
-import com.adiljins.fullstackbackend.exception.UserNotFoundException;
+import com.adiljins.fullstackbackend.exception.NotFoundException;
 import com.adiljins.fullstackbackend.model.User;
 import com.adiljins.fullstackbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     User getUserById(@PathVariable Long id){
-        return userRepository.findById(id).orElseThrow(()->new UserNotFoundException(id));
+        return userRepository.findById(id).orElseThrow(()->new NotFoundException(id));
     }
 
     @PutMapping("/user/{id}")
@@ -36,13 +36,13 @@ public class UserController {
             user.setName(newUser.getName());
             user.setEmail(newUser.getEmail());
             return userRepository.save(user);
-        }).orElseThrow(()->new UserNotFoundException(id));
+        }).orElseThrow(()->new NotFoundException(id));
     }
 
     @DeleteMapping("/user/{id}")
     String deleteUser(@PathVariable Long id){
         if (!userRepository.existsById(id)){
-            throw new UserNotFoundException(id);
+            throw new NotFoundException(id);
         }
         userRepository.deleteById(id);
         return "User with id " + id + " has been deleted";
