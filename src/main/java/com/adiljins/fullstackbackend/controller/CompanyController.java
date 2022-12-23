@@ -7,13 +7,14 @@ import com.adiljins.fullstackbackend.model.ship.ports_10.Cargo;
 import com.adiljins.fullstackbackend.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import static com.adiljins.fullstackbackend.accounting.Lease.getLeasing;
 
 import java.net.URI;
 import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/company/ship")
+@RequestMapping("/company-ship")
 @CrossOrigin("http://localhost:3000/")
 public class CompanyController {
 
@@ -70,4 +71,16 @@ public class CompanyController {
         return "Company with id " + id + " has been deleted";
     }
 
+    @GetMapping("/generate_prices")
+    public void generatePrice(){
+        List<Company> com =  companyRepository.findAll();
+        for(Company x:com){
+            for(Ship y:x.getShipsSet()){
+                y.setPrice(getLeasing(y.getTypeLease(),y.getYears(),y.getPricePerYear()));
+                y.setPricePerYear(y.getPricePerYear());
+                companyRepository.save(x);
+            }
+            companyRepository.save(x);
+        }
+    }
 }

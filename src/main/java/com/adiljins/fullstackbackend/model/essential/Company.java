@@ -132,4 +132,11 @@ public class Company {
     public void setE_mail(String e_mail) {
         this.e_mail = e_mail;
     }
+
+    public Set<Ship> getShipsSet() {
+        return ships;
+    }
+    public void getShipsSet(Set<Ship> ships) {
+        this.ships = ships;
+    }
 }
